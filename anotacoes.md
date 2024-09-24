@@ -201,7 +201,7 @@ function Item({marca, ano_lancamento}){
 
 Item.propTypes = { {/*Utilizamos o nome da função e o proptypes*/}
     marca: PropTypes.string.isRequired, {/*A marca deve ser uma string e é obrigatória*/}
-    ano_lancamento: PropTypes.number, {/*O ano_lancamento deve ser do tipo numério*/}
+    ano_lancamento: PropTypes.number, {/*O ano_lancamento deve ser do tipo numérico*/}
 }
 
 Item.defaultProps = {
@@ -280,7 +280,7 @@ function Form() {
             <h1>Meu cadastro:</h1>
             <form onSubmit={cadastrarUsuario}>
                 <div>
-                    <label htmlFor="name">Noame: </label>
+                    <label htmlFor="name">Nome: </label>
                     {/*o valor do campo name recebe o valor padrão de name que é 'Matheus' inicilamente ou até que seja mudado*/}
                     <input type="text" id="name" name="name" placeholder="Digite o seu nome" value={name} onChange={(e) => setName(e.target.value)}></input> {/* recebe o evento (e) e  manda o valor desse vento para o setName, assim cada letra digitada no campo modifica o valor do state */}
                 </div>
@@ -454,7 +454,7 @@ export default App;
 
 SeuNome.js
 ~~~~js
-function SeuNome({setNome}) { // Recebe o valor da propriedada setNome
+function SeuNome({setNome}) { // Recebe o valor da propriedade setNome
     return (
         <div>
             <p>Digite o seu nome:</p>
@@ -484,7 +484,7 @@ function Saudacao({nome}) { // Recebe o valor da propriedade nome
 export default Saudacao
 ~~~~
 
-# `AULA 15 | Implementando o Reacr Router`
+# `AULA 15 | Implementando o React Router`
 * É um pacote para mudança de URLs da aplicação.
 * Podemos assim acessar outras views sem o page reload.
 * Trocando apenas uma parte de layout da aplicação, ou seja, que muda de view para view.
@@ -516,6 +516,24 @@ export default App;
 
 ~~~~
 
+* NavBar.js:
+
+~~~~js
+import { Link } from "react-router-dom";
+import styles from "./NavBar.module.css"
+function NavBar(){
+    return(
+        <ul className={styles.list}>
+          <li className={styles.item}><Link to="/">Home</Link></li>
+          <li className={styles.item}><Link to="/empresa">Empresa</Link></li>
+          <li className={styles.item}><Link to="/contato">Contato</Link></li>
+        </ul>
+    )
+}
+
+export default NavBar;
+~~~~
+
 * Exemplo de página com Routes:
 Home.js
 ~~~~js
@@ -530,3 +548,49 @@ function Home(){ // Esse é o componente correspondente a um dos links no App.js
 
 export default Home;
 ~~~~
+
+# `AULA 16 | React Icons`
+
+* Pesquisar por React Icons.
+* instalar pacote: npm install react-icons.
+* impportat biblioteca do react-icons no componente.
+
+Footer.js
+~~~~js
+import {FaFacebook, FaInstagram, FaLinkedin} from 'react-icons/fa' // importando biblioteca
+import styles from './Footer.module.css'
+
+function Footer(){
+    return(
+        <footer>
+            <ul className={styles.social_list}>
+                <li>
+                    <FaFacebook /> {/*Utilizando os icons*/}
+                </li>
+                <li>
+                    <FaInstagram />
+                </li>
+                <li>
+                    <FaLinkedin />
+                </li>
+            </ul>
+        </footer>
+    )
+}
+
+export default Footer;
+~~~~
+
+# ``AULA 18 | Criando o projeto do curso``
+
+* npm create-new project costs: Cria um novo projeto de React com o nome costos
+
+* Entrar na posta costs
+
+* npm install json-server: responsável pelo back-end para fazer requisição com a API.
+
+* npm install react-icons: ícones
+
+* npm install react-router-dom: rotas
+
+* npm install uuid: cria ids para o banco.
